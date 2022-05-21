@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: -webkit-linear-gradient(top, #000, rgb(47, 30, 66));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: white;
+
+}
+
+.profile {
+    height: 12rem;
+    border-radius: 25%;
+    margin-bottom: 2rem;
+}
+
+ul {
+    display: flex;
+    margin-top: 3rem;
+}
+
+li {
+    list-style: none;
+    margin: 0 2rem;
+}
+
+a {
+    height: 50px;
+    width: 50px;
+    display: block;
+    background-color: white;
+}
+
+.github {
+    -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/github.svg);
+}
+
+.linkedin {
+    -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/linkedin.svg);
+}
+
+.gmail {
+    -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
+}

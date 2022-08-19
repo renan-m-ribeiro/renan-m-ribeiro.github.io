@@ -23,21 +23,48 @@ body {
 
 ul {
     display: flex;
-    margin-top: 3rem;
+    margin: 2.5rem 0;
 }
 
 li {
     list-style: none;
-    margin: 0 2rem;
+    margin: 0 1rem;
+    display: flex;
 }
 
-a {
+ul:first-of-type li a{
     height: 50px;
     width: 50px;
     display: block;
     background-color: white;
 }
 
+.projects {
+    display: flex;
+    width: 35%;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.projects a {
+    text-decoration: none;
+    border: darkgray 0px solid;
+    border-radius: 15px;
+    padding: 4px 12px;
+    margin: 4px;
+    background-color: white;
+    font-weight: 600;
+}
+
+a:any-link {
+    color: rgb(0, 0, 0);
+}
+
+a:hover {
+    background-color: darkgray
+}
 .github {
     -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/github.svg);
 }

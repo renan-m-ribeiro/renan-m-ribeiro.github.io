@@ -69,12 +69,15 @@ a:hover {
 }
 .github {
     -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/github.svg);
+    mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
 }
 
 .linkedin {
     -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/linkedin.svg);
+    mask-image: url(https://unpkg.com/simple-icons@v4/icons/linkedin.svg);
 }
 
 .gmail {
     -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
+    mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
 }

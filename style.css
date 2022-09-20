@@ -55,6 +55,7 @@ ul:first-of-type li a{
 
 .projects {
     display: flex;
+    flex-direction: column;
     width: 35%;
     align-items: center;
     justify-content: space-around;

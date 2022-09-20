@@ -9,7 +9,7 @@
     background: -webkit-linear-gradient(top, #000, rgb(47, 30, 66));
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;

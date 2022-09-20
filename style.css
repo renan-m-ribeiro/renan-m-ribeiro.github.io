@@ -103,6 +103,6 @@ a:hover {
 }
 
 .gmail {
-    -webkit-mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
-    mask-image: url(https://unpkg.com/simple-icons@v4/icons/gmail.svg);
+    -webkit-mask-image: url(./images/gmail.svg);
+    mask-image: url(./images/gmail.svg);
 }

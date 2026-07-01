@@ -1,48 +1,450 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="https://iconarchive.com/download/i97958/thehoth/seo/seo-web-code.ico" type="image/x-icon">
-    <title>Renan Mendes Ribeiro - Desenvolvedor Full Stack</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Renan Mendes Ribeiro — Desenvolvedor Full Stack</title>
+<meta name="description" content="Renan Mendes Ribeiro — desenvolvedor full stack em São Paulo. React, TypeScript e Node. Projetos, código e contato." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Renan Mendes Ribeiro — Desenvolvedor Full Stack" />
+<meta property="og:description" content="Desenvolvedor full stack em São Paulo. React, TypeScript e Node." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/52409522?v=4" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg:        #E8E9EC;
+    --surface:   #FBFBFC;
+    --ink:       #15161B;
+    --muted:     #595B65;
+    --line:      #D4D6DC;
+    --accent:    #3B2FE0;
+    --accent-2:  rgba(59, 47, 224, 0.09);
+    --signal:    #1F9E6B;
+
+    --fs-hero: clamp(2.9rem, 9vw, 6.8rem);
+    --fs-h2:   clamp(1.5rem, 3.6vw, 2.3rem);
+    --fs-proj: clamp(1.35rem, 3.4vw, 2rem);
+    --fs-body: 1.0625rem;
+    --fs-sm:   0.8rem;
+    --fs-mono: 0.76rem;
+
+    --maxw: 1080px;
+    --pad:  clamp(1.25rem, 5vw, 4rem);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grain — warmth without color */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); position: relative; z-index: 2; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- HERO ---------- */
+  header { padding: clamp(3.5rem, 12vh, 8rem) 0 clamp(2.5rem, 7vh, 4.5rem); }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    background: var(--surface);
+    margin-bottom: 2rem;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 0 rgba(31, 158, 107, 0.5);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(31,158,107,0.45); }
+    70%  { box-shadow: 0 0 0 7px rgba(31,158,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(31,158,107,0); }
+  }
+
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: var(--fs-hero);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.4rem;
+  }
+  h1 .line2 { display: block; color: var(--accent); }
+
+  .lede {
+    max-width: 34ch;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--muted);
+    margin-bottom: 2.4rem;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.02em;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    transition: border-color .2s ease, transform .2s ease, color .2s ease;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .btn.primary { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn svg { width: 15px; height: 15px; }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: clamp(2.5rem, 7vh, 5rem) 0; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: var(--fs-h2);
+    letter-spacing: -0.01em;
+  }
+  .section-head .count { margin-left: auto; }
+
+  /* ---------- PROJECTS (signature) ---------- */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 1.5rem;
+    align-items: start;
+    padding: 1.6rem 0 1.6rem 1.5rem;
+    border-top: 1px solid var(--line);
+    position: relative;
+    transition: padding-left .28s cubic-bezier(.2,.7,.3,1);
+  }
+  .project::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.6rem;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height .28s cubic-bezier(.2,.7,.3,1);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project:hover { padding-left: 2.1rem; }
+  .project:hover::before { height: calc(100% - 3.2rem); }
+  .project:hover .p-title { color: var(--accent); }
+
+  .p-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: var(--fs-proj);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    transition: color .2s ease;
+  }
+  .p-desc { color: var(--muted); max-width: 52ch; margin-top: 0.35rem; }
+  .p-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.85rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-mono);
+    color: var(--muted);
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .p-actions {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+    padding-top: 0.35rem;
+  }
+  .p-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: color .18s ease, gap .18s ease;
+  }
+  .p-link:hover { color: var(--accent); gap: 0.6rem; }
+  .p-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .p-link svg { width: 13px; height: 13px; }
+
+  /* ---------- STACK ---------- */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 2rem 2.5rem;
+  }
+  .stack-col h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+  }
+  .stack-col ul { list-style: none; }
+  .stack-col li { padding: 0.28rem 0; font-weight: 500; }
+
+  /* ---------- CONTACT ---------- */
+  .contact h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.6rem;
+  }
+  .contact a.mail { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .contact a.mail:hover { text-decoration-thickness: 2px; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--fs-mono);
+    color: var(--muted);
+  }
+  footer .fnav { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  footer a:hover { color: var(--accent); }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 620px) {
+    .project { grid-template-columns: 1fr; }
+    .p-actions { grid-column: 1; grid-row: auto; flex-direction: row; align-items: flex-start; padding-top: 0.9rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="profile">
-            <img src="https://avatars.githubusercontent.com/u/52409522?v=4" alt="foto perfil" class="profile-img">
-            <h1>
-                Renan Mendes Ribeiro
-            </h1>
-            <h2>
-                Desenvolvedor Full Stack
-            </h2>
-            <ul>
-                <li>
-                    <a href="https://github.com/renan-m-ribeiro" target="_blank" class="github" title="Github">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/renan-m-ribeiro/" target="_blank" class="linkedin" title="Linkedin">
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:renan.mendes013@gmail.com" target="_blank" class="gmail" title="Gmail">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="projects">
-        <h1>Projetos</h1>
-            <div>
-                <a href="https://github.com/renan-m-ribeiro/cryptozombies" target="_blank">CryptoZombies</a>
-                <a href="https://ignite-ku2vzfckw-renan-m-ribeiro.vercel.app/" target="_blank">eLearning</a>
-                <a href="https://renan-m-ribeiro.github.io/pokedex/" target="_blank">Pokedex</a>
-                <a href="https://renan-m-ribeiro.github.io/js30/" target="_blank">30 days JS Challenge</a>
-                <a href="https://github.com/renan-m-ribeiro/NFT-game" target="_blank">NFT game</a>
-            </div>
-        </div>
+
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header>
+    <span class="status"><span class="dot"></span>São Paulo, Brasil · aberto a projetos</span>
+    <h1>Renan Mendes<br><span class="line2">Ribeiro</span></h1>
+    <p class="lede">Desenvolvedor <strong>full stack</strong>. Construo interfaces e produtos web com React, TypeScript e Node.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:renan.mendes013@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Fale comigo
+      </a>
+      <a class="btn" href="https://github.com/renan-m-ribeiro" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/renan-m-ribeiro/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 17.34V10.5H6.06v6.84zM7.2 9.5a1.32 1.32 0 1 0 0-2.64 1.32 1.32 0 0 0 0 2.64zm10.14 7.84v-3.75c0-2-.43-3.54-2.77-3.54a2.43 2.43 0 0 0-2.19 1.2h-.03V10.5H9.9v6.84h2.28v-3.38c0-.9.17-1.76 1.28-1.76s1.1 1.02 1.1 1.82v3.32z"/></svg>
+        LinkedIn
+      </a>
     </div>
+  </header>
+
+  <!-- ================= PROJETOS ================= -->
+  <section id="projetos">
+    <div class="section-head reveal">
+      <h2>Projetos selecionados</h2>
+      <span class="eyebrow count">/ trabalho</span>
+    </div>
+
+    <!-- ===== Edite/adicione projetos abaixo. Cada bloco .project é independente. ===== -->
+
+    <article class="project reveal">
+      <div class="p-body">
+        <h3 class="p-title">Plataforma de eLearning</h3>
+        <p class="p-desc">Plataforma de cursos em vídeo com aulas, autenticação e API GraphQL. Front-end em React com componentes tipados.</p>
+        <div class="p-tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">GraphQL</span><span class="tag">Tailwind</span></div>
+      </div>
+      <div class="p-actions">
+        <!-- Confirme se este link de demo ainda está no ar; se não, troque pela URL de produção -->
+        <a class="p-link" href="https://ignite-ku2vzfckw-renan-m-ribeiro.vercel.app/" target="_blank" rel="noopener">
+          demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="p-link" href="https://github.com/renan-m-ribeiro/ignite-lab" target="_blank" rel="noopener">
+          código <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-body">
+        <h3 class="p-title">Pokédex</h3>
+        <p class="p-desc">Enciclopédia interativa consumindo a PokéAPI, com busca e detalhes de cada Pokémon. Feita em JavaScript puro.</p>
+        <div class="p-tags"><span class="tag">JavaScript</span><span class="tag">REST API</span><span class="tag">CSS</span></div>
+      </div>
+      <div class="p-actions">
+        <a class="p-link" href="https://renan-m-ribeiro.github.io/pokedex/" target="_blank" rel="noopener">
+          demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="p-link" href="https://github.com/renan-m-ribeiro/pokedex" target="_blank" rel="noopener">
+          código <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-body">
+        <h3 class="p-title">JavaScript 30</h3>
+        <p class="p-desc">Coletânea de 30 mini-projetos em JavaScript puro — sem frameworks nem bibliotecas — praticando DOM, eventos e Canvas.</p>
+        <div class="p-tags"><span class="tag">JavaScript</span><span class="tag">DOM</span><span class="tag">Canvas</span></div>
+      </div>
+      <div class="p-actions">
+        <a class="p-link" href="https://renan-m-ribeiro.github.io/js30/" target="_blank" rel="noopener">
+          demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="p-link" href="https://github.com/renan-m-ribeiro/js30" target="_blank" rel="noopener">
+          código <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-body">
+        <h3 class="p-title">Campanha de marketing financeiro</h3>
+        <p class="p-desc">Landing page e template de e-mail marketing para uma campanha fictícia, com foco em conversão e layout responsivo.</p>
+        <div class="p-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Email</span></div>
+      </div>
+      <div class="p-actions">
+        <a class="p-link" href="https://github.com/renan-m-ribeiro/financial-market-campaign" target="_blank" rel="noopener">
+          código <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section id="stack">
+    <div class="section-head reveal">
+      <h2>Stack</h2>
+      <span class="eyebrow count">/ ferramentas</span>
+    </div>
+    <div class="stack-grid reveal">
+      <div class="stack-col">
+        <h3>Front-end</h3>
+        <ul><li>React</li><li>TypeScript</li><li>JavaScript</li><li>HTML &amp; CSS</li><li>Tailwind · SASS</li></ul>
+      </div>
+      <div class="stack-col">
+        <h3>Back-end</h3>
+        <ul><li>Node.js</li><li>Express</li><li>GraphQL</li><li>REST APIs</li></ul>
+      </div>
+      <div class="stack-col">
+        <h3>Dados &amp; ferramentas</h3>
+        <ul><li>MongoDB</li><li>SQLite</li><li>Git &amp; GitHub</li><li>Insomnia</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTATO ================= -->
+  <section id="contato" class="contact">
+    <div class="reveal">
+      <h2>Vamos construir algo?</h2>
+      <p class="lede" style="max-width:46ch;margin-bottom:1.8rem;">Estou aberto a novos projetos e colaborações. O caminho mais rápido é por e-mail.</p>
+      <p style="font-size:clamp(1.2rem,3vw,1.7rem);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;">
+        <a class="mail" href="mailto:renan.mendes013@gmail.com">renan.mendes013@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <span>© <span id="year"></span> Renan Mendes Ribeiro</span>
+    <nav class="fnav">
+      <a href="https://github.com/renan-m-ribeiro" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/renan-m-ribeiro/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://twitter.com/renan_m_ribeiro" target="_blank" rel="noopener">X</a>
+      <a href="https://codepen.io/renan-m-ribeiro/" target="_blank" rel="noopener">CodePen</a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach((el, i) => { el.style.transitionDelay = (i % 5 * 60) + 'ms'; io.observe(el); });
+  } else {
+    els.forEach((el) => el.classList.add('in'));
+  }
+</script>
 </body>
 </html>
